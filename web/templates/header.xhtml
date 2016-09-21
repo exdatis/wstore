@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+            <div class ="divHeader">
+                <h:form>
+
+                    <!-- btn pocetna stranica -->
+                    <h:commandButton value="Početna" class="menuBtn">
+                        <!-- dodaj kod za akciju -->
+                    </h:commandButton>
+                    <!-- btn kupci -->
+                    <h:commandButton value="Kupci" class="menuBtn">
+                        <!-- dodaj kod za akciju -->
+                    </h:commandButton>
+                    <!-- btn za proizvode -->
+                    <h:commandButton value="Proizvodi" action="#" class="menuBtn">
+                        <!-- dodaj kod za akciju -->
+                    </h:commandButton>
+                    <!-- btn prodaja -->
+                    <h:commandButton value="Prodaja" class="menuBtn">
+                        <!-- dodaj kod za akciju -->
+                    </h:commandButton>
+                </h:form>
+            </div>
+            <div align="center" class="divSubHeader">
+                <!-- ovde sam hteo da postavim komponentu koja uz efekte menja img ali bi bilo preterano -->
+                <h:graphicImage value="/img/wstore.jpeg"/>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
+
