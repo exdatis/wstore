@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:composite="http://java.sun.com/jsf/composite">
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
     
     <!-- interface -->
     <composite:interface>
@@ -11,6 +12,7 @@
         <composite:attribute name="nameLabel"></composite:attribute>
         <composite:attribute name="nameValue"></composite:attribute>
         <composite:attribute name="btnResetLabel"></composite:attribute>
+        <composite:attribute name="defaultFocus"></composite:attribute>
         <composite:attribute 
             name="btnReset" 
             method-signature="java.lang.String resetValue()">
@@ -23,18 +25,19 @@
     </composite:interface>
     <!-- implementacija -->
     <composite:implementation>
-        <h:form>
-            <h:outputStylesheet library="/css" name="styles.css"></h:outputStylesheet>
+        <h:form id="new_form">
+            <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
             <h:panelGrid columns="2" id="panelMeasureForm" border="0" bgcolor="silver">
                 <h:outputLabel value="#{cc.attrs.signLabel}"></h:outputLabel>
-                <h:inputText value="#{cc.attrs.signValue}"></h:inputText>
+                <h:inputText id="new_sign" value="#{cc.attrs.signValue}" size="5"></h:inputText>
                 <h:outputLabel value="#{cc.attrs.nameLabel}"></h:outputLabel>
-                <h:inputText value="#{cc.attrs.nameValue}"></h:inputText>
+                <h:inputText value="#{cc.attrs.nameValue}" size="20"></h:inputText>
                 <h:commandButton
                     action="#{cc.attrs.btnReset}"
                     value="#{cc.attrs.btnResetLabel}"
                     class="cmdBtn"
                     title="Pripremi novi zapis">
+                    <p:focus for="new_form:new_sign"></p:focus>
                 </h:commandButton>
                 <h:commandButton
                     action="#{cc.attrs.btnSubmit}"

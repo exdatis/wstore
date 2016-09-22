@@ -22,8 +22,11 @@ and open the template in the editor.
 }
 
 .divFooter{
+    position:absolute;
+    bottom:0;
     background: midnightblue;
     color: white;
+    width: 99%;
 }
 
 .menuBtn{
@@ -40,7 +43,7 @@ and open the template in the editor.
     color: white;
     cursor: pointer;
     width: 120px;
-    border: solid cornflowerblue;
-    height: 25px;
+    border: none;
+    /* height: 25px; */
 }
 

@@ -17,7 +17,7 @@ public final class Wdb {
 
     // ovo treba prilagoditi
     private static final String USER_NAME = "root";
-    private static final String USER_PWD = "JDevelopment013";
+    private static final String USER_PWD = "JDK013";
     private static final String DB_HOST = "localhost";
     private static final String DB_PORT = "3306";
     private static final String DB_NAME = "wstore"; // ovo treba da bude dostupno kao izbor

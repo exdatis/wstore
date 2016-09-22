@@ -10,17 +10,18 @@
     <h:body style="background-color: gainsboro;">
         <ui:composition template="/templates/product/common.xhtml">
             <ui:define name="contents">
-                <tp:measureForm
-                    signLabel="Oznaka mere"
-                    signValue="#{measureBean.measureSign}"
-                    nameLabel="Naziv jedinice"
-                    nameValue="#{measureBean.measureName}"
-                    btnResetLabel="Novi zapis"
-                    btnReset="#{measureBean.resetValues()}"
-                    btnSubmitLabel="Sačuvaj izmene"
-                    btnSubmit="#{measureBean.addMeasure()}">
-                </tp:measureForm>
-                
+                <div align="center" style="background-color: gainsboro;">
+                    <tp:measureForm
+                        signLabel="Oznaka mere"
+                        signValue="#{measureBean.measureSign}"
+                        nameLabel="Naziv jedinice"
+                        nameValue="#{measureBean.measureName}"
+                        btnResetLabel="Novi zapis"
+                        btnReset="#{measureBean.resetValues()}"
+                        btnSubmitLabel="Sačuvaj izmene"
+                        btnSubmit="#{measureBean.addMeasure()}">
+                    </tp:measureForm>
+                </div>
             </ui:define>
             
         </ui:composition>
