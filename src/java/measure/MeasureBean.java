@@ -39,7 +39,7 @@ public class MeasureBean implements Serializable{
     
     // ovo treba prilagoditi
     private final String USER_NAME = "root";
-    private final String USER_PWD = "JDK013";
+    private final String USER_PWD = "JDevelopment013";
     private final String DB_HOST = "localhost";
     private final String DB_PORT = "3306";
     private final String DB_NAME = "wstore"; // ovo treba da bude dostupno kao izbor
@@ -138,7 +138,7 @@ public class MeasureBean implements Serializable{
         }
 
         int new_id = 0;
-        String sql = "{call measure_add(?, ?, ?)";
+        String sql = "{call measure_add(?, ?, ?)}";
         try (CallableStatement cst = conn.prepareCall(sql);) {
             cst.setString(1, m.getMeasureSign());
             cst.setString(2, m.getMeasureName());
@@ -169,7 +169,7 @@ public class MeasureBean implements Serializable{
             return success;
         }
 
-        String sql = "{call measure_update(?, ?, ?)";
+        String sql = "{call measure_update(?, ?, ?)}";
         try (CallableStatement cst = conn.prepareCall(sql);) {
             cst.setInt(1, m.getMeasureId());
             cst.setString(2, m.getMeasureSign());
@@ -199,7 +199,7 @@ public class MeasureBean implements Serializable{
             return success;
         }
 
-        String sql = "{call measure_delete(?)";
+        String sql = "{call measure_delete(?)}";
         try (CallableStatement cst = conn.prepareCall(sql);) {
             cst.setInt(1, m.getMeasureId());
             success = cst.execute();
@@ -246,18 +246,23 @@ public class MeasureBean implements Serializable{
         return measures;
 
     }
-    public Connection getDbConnection() {
+    public Connection getDbConnection() throws SQLException {
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver ());// zbog ove linije koda(dok nisam pronasao resenje na stackoverflow
+                                                                   // izgubio sam pola dana. Molim vas, za neke buduce generacije uvedite
+                                                                   // ovo objasnjenje u materijal(pdf). Ja zbog vremena nisam bio u mogucnosti
+                                                                   // da odslusam sva vasa predavanja, mozda ste vi i pomenuli ovo, neznam 
+                                                                   // ali u video-materijalu (kratka verzija) ovog objasnjenja nema.
         Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/wstore" ; //+ DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
-        System.out.println(url + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        String url = "jdbc:mysql://"+ DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
+        //System.out.println(url + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         try {
-            conn = DriverManager.getConnection(url, "root", "JDK013");
+            conn = DriverManager.getConnection(url, USER_NAME , USER_PWD);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("Nema konekcije >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            //System.out.println("Nema konekcije >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             return conn;
         }
-        System.out.println("IMA KONEKCIJU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        //System.out.println("IMA KONEKCIJU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         return conn;
     }
     
