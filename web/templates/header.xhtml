@@ -9,12 +9,12 @@
     </h:head>
     <h:body>
         <ui:composition>
-            <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+            <h:outputStylesheet library="/css" name="styles.css"></h:outputStylesheet>
             <div class ="divHeader">
                 <h:form>
 
                     <!-- btn pocetna stranica -->
-                    <h:commandButton value="Početna" class="menuBtn">
+                    <h:commandButton value="Početna" action="index.xhtml" class="menuBtn">
                         <!-- dodaj kod za akciju -->
                     </h:commandButton>
                     <!-- btn kupci -->
@@ -22,7 +22,7 @@
                         <!-- dodaj kod za akciju -->
                     </h:commandButton>
                     <!-- btn za proizvode -->
-                    <h:commandButton value="Proizvodi" action="#" class="menuBtn">
+                    <h:commandButton value="Proizvodi" action="product/product.xhtml" class="menuBtn">
                         <!-- dodaj kod za akciju -->
                     </h:commandButton>
                     <!-- btn prodaja -->
@@ -33,7 +33,7 @@
             </div>
             <div align="center" class="divSubHeader">
                 <!-- ovde sam hteo da postavim komponentu koja uz efekte menja img ali bi bilo preterano -->
-                <h:graphicImage value="/img/wstore.jpeg"/>
+                <h:graphicImage value="/img/wstore.png"/>
             </div>
         </ui:composition>
     </h:body>

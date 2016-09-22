@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+    
+    <!-- interface -->
+    <composite:interface>
+        <composite:attribute name="signLabel"></composite:attribute>
+        <composite:attribute name="signValue"></composite:attribute>
+        <composite:attribute name="nameLabel"></composite:attribute>
+        <composite:attribute name="nameValue"></composite:attribute>
+        <composite:attribute name="btnResetLabel"></composite:attribute>
+        <composite:attribute 
+            name="btnReset" 
+            method-signature="java.lang.String resetValue()">
+        </composite:attribute>
+        <composite:attribute name="btnSubmitLabel"></composite:attribute>
+        <composite:attribute
+            name="btnSubmit"
+            method-signature="java.lang.String addMeasure()">
+        </composite:attribute>
+    </composite:interface>
+    <!-- implementacija -->
+    <composite:implementation>
+        <h:form>
+            <h:outputStylesheet library="/css" name="styles.css"></h:outputStylesheet>
+            <h:panelGrid columns="2" id="panelMeasureForm" border="0" bgcolor="silver">
+                <h:outputLabel value="#{cc.attrs.signLabel}"></h:outputLabel>
+                <h:inputText value="#{cc.attrs.signValue}"></h:inputText>
+                <h:outputLabel value="#{cc.attrs.nameLabel}"></h:outputLabel>
+                <h:inputText value="#{cc.attrs.nameValue}"></h:inputText>
+                <h:commandButton
+                    action="#{cc.attrs.btnReset}"
+                    value="#{cc.attrs.btnResetLabel}"
+                    class="cmdBtn"
+                    title="Pripremi novi zapis">
+                </h:commandButton>
+                <h:commandButton
+                    action="#{cc.attrs.btnSubmit}"
+                    value="#{cc.attrs.btnSubmitLabel}"
+                    class="cmdBtn"
+                    title="Sačuvaj izmene">
+                </h:commandButton>
+            </h:panelGrid>
+        </h:form>        
+    </composite:implementation>
+</html>
+

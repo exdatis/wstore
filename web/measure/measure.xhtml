@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tp="http://java.sun.com/jsf/composite/components/measure" >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body style="background-color: gainsboro;">
+        <ui:composition template="/templates/product/common.xhtml">
+            <ui:define name="contents">
+                <tp:measureForm
+                    signLabel="Oznaka mere"
+                    signValue="#{measureBean.measureSign}"
+                    nameLabel="Naziv jedinice"
+                    nameValue="#{measureBean.measureName}"
+                    btnResetLabel="Novi zapis"
+                    btnReset="#{measureBean.resetValues()}"
+                    btnSubmitLabel="Sačuvaj izmene"
+                    btnSubmit="#{measureBean.addMeasure()}">
+                </tp:measureForm>
+                
+            </ui:define>
+            
+        </ui:composition>
+    </h:body>
+</html>
+

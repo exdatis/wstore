@@ -32,6 +32,15 @@ and open the template in the editor.
     cursor: pointer;
     width: 120px;
     border: solid cornflowerblue;
+    height: 25px;    
+}
+
+.cmdBtn{
+    background-color: midnightblue;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    border: solid cornflowerblue;
     height: 25px;
 }
 
