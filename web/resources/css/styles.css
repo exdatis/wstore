@@ -19,6 +19,7 @@ and open the template in the editor.
     border-collapse:collapse;
     border:cornflowerblue;
     border-style: solid;
+    border-width: thin;
 }
 
 .divFooter{
@@ -29,9 +30,23 @@ and open the template in the editor.
     width: 99%;
 }
 
+.divTable{
+    padding: 3px;
+    background-color: gainsboro; 
+    border-collapse: collapse;
+    border-width: thin;
+    border-color: lightgray;
+    border-style: solid;
+    overflow-x: auto; 
+    overflow-y: auto;
+    height: 370px; 
+    align-items: center
+}
+
 .divErrorMsg{
     background-color: brown;
-    width: 99%;
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .lblError{

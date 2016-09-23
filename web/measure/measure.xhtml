@@ -17,7 +17,7 @@
                     </h:form>                   
                 </div>
                 
-                <div align="center" style="background-color: gainsboro;">
+                <div align="center" style="background-color: gainsboro; padding: 3px;">
                     <tp:measureForm
                         signLabel="Oznaka mere"
                         signValue="#{measureBean.measureSign}"
@@ -28,6 +28,10 @@
                         btnSubmitLabel="Sačuvaj izmene"
                         btnSubmit="#{measureBean.addMeasure()}">
                     </tp:measureForm>
+                </div>
+                <!-- tabela masure (editable) -->
+                <div align="center" class="divTable">
+                    
                 </div>
             </ui:define>
             

@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author morar
  */
 @ManagedBean(name = "measureBean", eager = true)
-@SessionScoped
+@RequestScoped
 public class MeasureBean implements Serializable{
     
     private int measureId;
@@ -98,6 +98,7 @@ public class MeasureBean implements Serializable{
             MEASURES.add(m);
             return null;
         }
+        msg = "Error: " + msg;
         this.setErrorMsg(msg);
         // System.out.println("Poruka(addMeasure()): >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + this.getErrorMsg());
         return null;
@@ -110,6 +111,7 @@ public class MeasureBean implements Serializable{
             MEASURES.remove(m);
             return null;
         }
+        msg = "Error: " + msg;
         this.setErrorMsg(msg);
         return null;
     }
@@ -129,6 +131,7 @@ public class MeasureBean implements Serializable{
             }
             return null;
         }
+        msg = "Error: " + msg;
         this.setErrorMsg(msg);
         return null;
     }
