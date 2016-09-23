@@ -19,6 +19,7 @@
                             <h:outputText class="lblError"  value="#{measureBean.errorMsg}"></h:outputText>
                         </h:form>                   
                     </div>
+                    
                     <tp:measureForm
                         signLabel="Oznaka mere"
                         signValue="#{measureBean.measureSign}"
@@ -29,6 +30,7 @@
                         btnSubmitLabel="Sačuvaj zapis"
                         btnSubmit="#{measureBean.addMeasure()}">
                     </tp:measureForm>
+                    
                 </div>
                 <!-- tabela masure (editable) -->
                 <div align="center" class="divTable">

@@ -8,10 +8,12 @@ and open the template in the editor.
     Author     : morar
 */
 
-.divHeader{   
+.divHeader{ 
+    /* border-radius: 10px 10px 0 0; */
     background-color: midnightblue;
     border-collapse:collapse;
     border:1px solid navy;
+    /* padding: 1px; */
     overflow-x: auto;
 }
 
