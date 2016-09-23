@@ -10,13 +10,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author morar
  */
 @ManagedBean(name = "measureBean", eager = true)
-@RequestScoped
+@SessionScoped
 public class MeasureBean implements Serializable{
     
     private int measureId;
@@ -27,7 +28,7 @@ public class MeasureBean implements Serializable{
     
     private Measure selectedMeasure;
     
-    private final static ArrayList<Measure> MEASURES = Measure.getAllMeasures() ; 
+    private final static ArrayList<Measure> measures = Measure.getAllMeasures() ; 
     
     /**
      * Creates a new instance of MeasureBean
@@ -80,7 +81,7 @@ public class MeasureBean implements Serializable{
     }
     
     public ArrayList<Measure> getMesures(){
-        return MEASURES;
+        return measures;
     }
     
     public void resetValues(){
@@ -95,7 +96,7 @@ public class MeasureBean implements Serializable{
         Measure m = new Measure(measureSign, measureName);
         String msg = m.insertRec();
         if(msg.equalsIgnoreCase("y")){
-            MEASURES.add(m);
+            measures.add(m);
             return null;
         }
         msg = "Error: " + msg;
@@ -108,7 +109,7 @@ public class MeasureBean implements Serializable{
         this.setErrorMsg(null);
         String msg = m.deleteRec();
         if(msg.equalsIgnoreCase("y")){
-            MEASURES.remove(m);
+            measures.remove(m);
             return null;
         }
         msg = "Error: " + msg;
@@ -117,16 +118,18 @@ public class MeasureBean implements Serializable{
     }
     
     public String editMeasure(Measure m){
-        m.setCanEdit(true);
         this.setSelectedMeasure(m);
+        //System.out.println("Selektovani red: " + m.getMeasureId() + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        m.setCanEdit(true);
         return null;
     }
     
     public String updateMeasure() throws SQLException{
         this.setErrorMsg(null);
         String msg = this.selectedMeasure.updateRec();
+        //System.out.println("Selected measure: " + this.selectedMeasure.getMeasureId() + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         if(msg.equalsIgnoreCase("y")){
-            for(Measure m : MEASURES){
+            for(Measure m : measures){
                 m.setCanEdit(false);
             }
             return null;

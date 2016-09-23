@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 23, 2016, 12:10:30 PM
+    Author     : morar
+*/
+
+.measureTbl{  
+    font-size: small;
+    border-collapse:collapse;
+    border:1px solid navy;
+    /* width: 90%; */
+}
+.measureTblHeader{
+    text-align:left;
+    background:none repeat scroll 0 0 midnightblue;
+    border-bottom:1px solid #000000;  
+    color: white;
+}
+
+
+.measureTblOddRow{
+    text-align:left;
+    font-size: medium;
+    background:none repeat scroll 0 0 #FFFFFF;	
+}
+
+.measureTblEvenRow{
+    text-align:left;
+    font-size: medium;
+    background:none repeat scroll 0 0 #D3D3D3;
+}
+
+.measureTblColLeft{
+    text-align:left;
+    font-size: medium;
+}
+
+.measureTblColRight{
+    text-align:right;
+    font-size: medium;
+}
+
+.measureTblColCenter{
+    text-align:right;
+    font-size: medium;    
+}
+

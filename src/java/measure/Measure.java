@@ -29,21 +29,25 @@ public class Measure {
     private boolean canEdit;
 
     public Measure() {
+        this.canEdit = false;
     }
 
     public Measure(String measureName) {
         this.measureName = measureName;
+        this.canEdit = false;
     }
 
     public Measure(String measureSign, String measureName) {
         this.measureSign = measureSign;
         this.measureName = measureName;
+        this.canEdit = false;
     }
 
     public Measure(int measureId, String measureSign, String measureName) {
         this.measureId = measureId;
         this.measureSign = measureSign;
         this.measureName = measureName;
+        this.canEdit = false;
     }
 
     public int getMeasureId() {

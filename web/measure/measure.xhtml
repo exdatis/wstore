@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:tp="http://java.sun.com/jsf/composite/components/measure" >
+      xmlns:tp="http://java.sun.com/jsf/composite/components/measure" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Jedinice mere</title>
     </h:head>
@@ -17,7 +18,7 @@
                     </h:form>                   
                 </div>
                 
-                <div align="center" style="background-color: gainsboro; padding: 3px;">
+                <div align="center" class="divForm">
                     <tp:measureForm
                         signLabel="Oznaka mere"
                         signValue="#{measureBean.measureSign}"
@@ -25,12 +26,66 @@
                         nameValue="#{measureBean.measureName}"
                         btnResetLabel="Novi zapis"
                         btnReset="#{measureBean.resetValues()}"
-                        btnSubmitLabel="Sačuvaj izmene"
+                        btnSubmitLabel="Sačuvaj zapis"
                         btnSubmit="#{measureBean.addMeasure()}">
                     </tp:measureForm>
                 </div>
                 <!-- tabela masure (editable) -->
                 <div align="center" class="divTable">
+                    <h:outputStylesheet library="css" name="tblMeasure.css"></h:outputStylesheet>
+                    <h:form>
+                        <h:dataTable value="#{measureBean.mesures}" var="measure"
+                                     cellpadding="5"
+                                     styleClass="measureTbl"
+                                     headerClass="measureTblHeader"
+                                     rowClasses="measureTblOddRow, measureTblEvenRowm"
+                                     columnClasses="measureTblColLeft,measureTblColLeft, measureTblColLeft, measureTblColRight, measureTblColLeft">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{measure.measureId}" rendered="#{not measure.canEdit}"></h:outputText>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">Oznaka mere</f:facet>
+                                <h:inputText value="#{measure.measureSign}" size="5" rendered="#{measure.canEdit}"></h:inputText>
+                                <h:outputText value="#{measure.measureSign}" rendered="#{not measure.canEdit}"></h:outputText>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">Naziv jedinice</f:facet>
+                                <h:inputText value="#{measure.measureName}" size="15" rendered="#{measure.canEdit}"></h:inputText>
+                                <h:outputText value="#{measure.measureName}" rendered="#{not measure.canEdit}"></h:outputText>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name ="header"></f:facet>
+                                <h:commandButton class="cmdBtn"
+                                                 action="#{measureBean.editMeasure(measure)}"
+                                                 rendered="#{not measure.canEdit}"
+                                                 value="Izmeni"
+                                                 title="Izmeni selektovani red">
+                                </h:commandButton>
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header"></f:facet>
+                                <h:commandButton onclick="if (! confirm('Sigurno brišete zapis?')) return false"
+                                                 class="cmdBtn"
+                                                 action="#{measureBean.deleteMeasure(measure)}"
+                                                 rendered="#{not measure.canEdit}"
+                                                 value="Obriši"
+                                                 title="Trajno brisanje podataka">
+                                </h:commandButton>                                <br/>                               
+                            </h:column>
+                        
+                        </h:dataTable>
+                        <br/>
+                        <h:commandButton class="cmdBtn" 
+                                         value="Sačuvaj izmene" 
+                                         action="#{measureBean.updateMeasure()}"
+                                         accesskey="i"
+                                         title="Snimi u bazu podataka(Alt+Shift+I)">
+                        </h:commandButton>
+                    </h:form>
                     
                 </div>
             </ui:define>

@@ -36,14 +36,16 @@
                     action="#{cc.attrs.btnReset}"
                     value="#{cc.attrs.btnResetLabel}"
                     class="cmdBtn"
-                    title="Pripremi novi zapis">
+                    accesskey="n"
+                    title="Pripremi novi zapis(Alt+Shift+N)">
                     <p:focus for="formMeasure:fieldSign"></p:focus>
                 </h:commandButton>
                 <h:commandButton
                     action="#{cc.attrs.btnSubmit}"
                     value="#{cc.attrs.btnSubmitLabel}"
                     class="cmdBtn"
-                    title="Sačuvaj izmene">
+                    accesskey="s"
+                    title="Sačuvaj zapis(Alt+Shift+S)">
                 </h:commandButton>
             </h:panelGrid>
         </h:form>        

@@ -43,6 +43,16 @@ and open the template in the editor.
     align-items: center
 }
 
+.divForm{
+    background-color: gainsboro; 
+    padding: 3px;
+    border-color: cornflowerblue;
+    border-collapse: collapse;
+    border-width: thin;
+    overflow-x: auto; 
+    overflow-y: auto;
+}
+
 .divErrorMsg{
     background-color: brown;
     width: 100%;
