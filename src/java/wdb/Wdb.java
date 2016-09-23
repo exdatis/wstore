@@ -27,10 +27,7 @@ public final class Wdb {
     
     public static Connection getDbConnection() throws SQLException, ClassNotFoundException {
         //DriverManager.registerDriver(new com.mysql.jdbc.Driver());// zbog ove linije koda(dok nisam pronasao resenje na stackoverflow)
-        // izgubio sam pola dana. Molim vas, za neke buduce generacije uvedite
-        // ovo objasnjenje u materijal(pdf). Ja zbog vremena nisam bio u mogucnosti
-        // da odslusam sva vasa predavanja, mozda ste vi i pomenuli ovo, neznam 
-        // ali u video-materijalu (kratka verzija) i pdf-u ovog objasnjenja nema.
+        // izgubio sam pola dana. 
         
         // novi test(zbog unregister)
         Class.forName("com.mysql.jdbc.Driver"); // radi i ovako
