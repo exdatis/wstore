@@ -11,14 +11,14 @@
     <h:body style="background-color: gainsboro;">
         <ui:composition template="/templates/product/common.xhtml">
             <ui:define name="contents">
-                <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
-                <div align="center" class="divErrorMsg">
-                    <h:form>
-                        <h:outputText class="lblError"  value="#{measureBean.errorMsg}"></h:outputText>
-                    </h:form>                   
-                </div>
-                
+                <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>                
                 <div align="center" class="divForm">
+                    <!-- error messages -->
+                    <div align="center" class="divErrorMsg">
+                        <h:form>
+                            <h:outputText class="lblError"  value="#{measureBean.errorMsg}"></h:outputText>
+                        </h:form>                   
+                    </div>
                     <tp:measureForm
                         signLabel="Oznaka mere"
                         signValue="#{measureBean.measureSign}"

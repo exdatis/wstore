@@ -137,6 +137,8 @@ public class MeasureBean implements Serializable{
             for(Measure m : measures){
                 m.setCanEdit(false);
             }
+            // resetuj selectedMeasure
+            this.setSelectedMeasure(null);
             return null;
         }
         msg = "Error: " + msg;
