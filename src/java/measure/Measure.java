@@ -78,14 +78,15 @@ public class Measure {
         this.canEdit = canEdit;
     }   
 
-    public boolean insertRec() throws SQLException {
-        boolean success = false;
+    public String insertRec() throws SQLException {
+        String success = "n"; // error
         Connection conn = null;
         try {
             conn = Wdb.getDbConnection();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return success;
+            String msg = e.getMessage();
+            System.out.println(msg);
+            return msg;
         }
 
         int new_id = 0;
@@ -94,30 +95,31 @@ public class Measure {
             cst.setString(1, this.getMeasureSign());
             cst.setString(2, this.getMeasureName());
             cst.registerOutParameter(3, java.sql.Types.INTEGER);
-            success = cst.execute(); // neznam zasto ali mi ovo nije promenilo vrednost success?
+            boolean added = cst.execute(); // neznam zasto ali mi ovo nije promenilo vrednost success?
             new_id = cst.getInt(3);
             this.setMeasureId(new_id);
         } catch (SQLException ex) {
-            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, ex);
-            return success;
+            String sqlError = ex.getMessage();
+            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, sqlError);
+            return sqlError;
         }
         // close connection
         if (conn != null) {
             conn.close();
         }
-
-        success = true;
+        success = "y"; // ok
         return success;
     }
 
-    public boolean updateRec() throws SQLException {
-        boolean success = false;
+    public String updateRec() throws SQLException {
+        String success = "n"; // error
         Connection conn = null;
         try {
             conn = Wdb.getDbConnection();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return success;
+            String msg = e.getMessage();
+            System.out.println(msg);
+            return msg;
         }
 
         String sql = "{call measure_update(?, ?, ?)}";
@@ -125,46 +127,48 @@ public class Measure {
             cst.setInt(1, this.getMeasureId());
             cst.setString(2, this.getMeasureSign());
             cst.setString(3, this.getMeasureName());
-            success = cst.execute();
+            boolean updated = cst.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, ex);
-            return success;
+            String sqlError = ex.getMessage();
+            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, sqlError);
+            return sqlError;
         }
 
         // close connection
         if (conn != null) {
             conn.close();
         }
-
-        success = true;
+        success = "y"; // ok
         return success;
     }
 
-    public boolean deleteRec() throws SQLException {
-        boolean success = false;
+    public String deleteRec() throws SQLException {
+        String success = "y";
         Connection conn = null;
         try {
             conn = Wdb.getDbConnection();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return success;
+            String msg = e.getMessage();
+            System.out.println(msg);
+            return msg;
         }
 
         String sql = "{call measure_delete(?)}";
         try (CallableStatement cst = conn.prepareCall(sql);) {
             cst.setInt(1, this.getMeasureId());
-            success = cst.execute();
+            boolean deleted = cst.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, ex);
-            return success;
+            String sqlError = ex.getMessage();
+            Logger.getLogger(Measure.class.getName()).log(Level.SEVERE, null, sqlError);
+            return sqlError;
         }
 
         // close connection
         if (conn != null) {
             conn.close();
         }
-
-        success = true;
+        
+        success = "y"; // ok
         return success;
     }
 

@@ -25,12 +25,15 @@ public final class Wdb {
     private Wdb() {
     }
     
-    public static Connection getDbConnection() throws SQLException {
-        DriverManager.registerDriver(new com.mysql.jdbc.Driver());// zbog ove linije koda(dok nisam pronasao resenje na stackoverflow
+    public static Connection getDbConnection() throws SQLException, ClassNotFoundException {
+        //DriverManager.registerDriver(new com.mysql.jdbc.Driver());// zbog ove linije koda(dok nisam pronasao resenje na stackoverflow)
         // izgubio sam pola dana. Molim vas, za neke buduce generacije uvedite
         // ovo objasnjenje u materijal(pdf). Ja zbog vremena nisam bio u mogucnosti
         // da odslusam sva vasa predavanja, mozda ste vi i pomenuli ovo, neznam 
         // ali u video-materijalu (kratka verzija) i pdf-u ovog objasnjenja nema.
+        
+        // novi test(zbog unregister)
+        Class.forName("com.mysql.jdbc.Driver"); // radi i ovako
         Connection conn = null;
         String url = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
         //System.out.println(url + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");

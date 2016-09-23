@@ -5,11 +5,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:tp="http://java.sun.com/jsf/composite/components/measure" >
     <h:head>
-        <title>Facelet Title</title>
+        <title>Jedinice mere</title>
     </h:head>
     <h:body style="background-color: gainsboro;">
         <ui:composition template="/templates/product/common.xhtml">
             <ui:define name="contents">
+                <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+                <div align="center" class="divErrorMsg">
+                    <h:form>
+                        <h:outputText class="lblError"  value="#{measureBean.errorMsg}"></h:outputText>
+                    </h:form>                   
+                </div>
+                
                 <div align="center" style="background-color: gainsboro;">
                     <tp:measureForm
                         signLabel="Oznaka mere"

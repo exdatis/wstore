@@ -29,6 +29,18 @@ and open the template in the editor.
     width: 99%;
 }
 
+.divErrorMsg{
+    background-color: brown;
+    width: 99%;
+}
+
+.lblError{
+    color: yellow;
+    /* font-weight: bold; */
+    display: block;
+    width: 99%;
+}
+
 .menuBtn{
     background-color: midnightblue;
     color: white;

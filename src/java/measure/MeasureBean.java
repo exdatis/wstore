@@ -23,6 +23,8 @@ public class MeasureBean implements Serializable{
     private String measureSign;
     private String measureName;
     
+    private String errorMsg;
+    
     private Measure selectedMeasure;
     
     private final static ArrayList<Measure> MEASURES = Measure.getAllMeasures() ; 
@@ -59,6 +61,16 @@ public class MeasureBean implements Serializable{
         this.measureName = measureName;
     }
 
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    
+    
+
     public Measure getSelectedMeasure() {
         return selectedMeasure;
     }
@@ -75,23 +87,31 @@ public class MeasureBean implements Serializable{
         this.measureId = 0;
         this.measureSign = null;
         this.measureName = null;
+        this.setErrorMsg(null);
     }
     
     public String addMeasure() throws SQLException{
+        this.setErrorMsg(null);
         Measure m = new Measure(measureSign, measureName);
-        if(m.insertRec()){
+        String msg = m.insertRec();
+        if(msg.equalsIgnoreCase("y")){
             MEASURES.add(m);
             return null;
         }
-        return "measure";
+        this.setErrorMsg(msg);
+        // System.out.println("Poruka(addMeasure()): >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + this.getErrorMsg());
+        return null;
     }
     
     public String deleteMeasure(Measure m) throws SQLException{
-        if(m.deleteRec()){
+        this.setErrorMsg(null);
+        String msg = m.deleteRec();
+        if(msg.equalsIgnoreCase("y")){
             MEASURES.remove(m);
             return null;
         }
-        return "measure";
+        this.setErrorMsg(msg);
+        return null;
     }
     
     public String editMeasure(Measure m){
@@ -101,13 +121,16 @@ public class MeasureBean implements Serializable{
     }
     
     public String updateMeasure() throws SQLException{
-        if(this.selectedMeasure.updateRec()){
+        this.setErrorMsg(null);
+        String msg = this.selectedMeasure.updateRec();
+        if(msg.equalsIgnoreCase("y")){
             for(Measure m : MEASURES){
                 m.setCanEdit(false);
             }
             return null;
         }
-        return "measure";
+        this.setErrorMsg(msg);
+        return null;
     }
     
 }
