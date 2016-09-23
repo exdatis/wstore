@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import wdb.CRUDrecord;
 import wdb.Wdb;
 
 
@@ -21,7 +21,7 @@ import wdb.Wdb;
  *
  * @author morar
  */
-public class Measure {
+public class Measure implements CRUDrecord{
     
     private int measureId;
     private String measureSign;
@@ -82,6 +82,7 @@ public class Measure {
         this.canEdit = canEdit;
     }   
 
+    @Override
     public String insertRec() throws SQLException {
         String success = "n"; // error
         Connection conn = null;
@@ -115,6 +116,7 @@ public class Measure {
         return success;
     }
 
+    @Override
     public String updateRec() throws SQLException {
         String success = "n"; // error
         Connection conn = null;
@@ -146,6 +148,7 @@ public class Measure {
         return success;
     }
 
+    @Override
     public String deleteRec() throws SQLException {
         String success = "y";
         Connection conn = null;

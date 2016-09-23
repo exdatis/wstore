@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -125,6 +124,12 @@ public class MeasureBean implements Serializable{
     }
     
     public String updateMeasure() throws SQLException{
+        // ako je greskom pritisnuo sacuvaj izmene
+        if(this.selectedMeasure == null){
+            String error = "Error: Nema izmena na zapisima(nije selektovan slog za izmenu).";
+            this.setErrorMsg(error);
+            return null;
+        }
         this.setErrorMsg(null);
         String msg = this.selectedMeasure.updateRec();
         //System.out.println("Selected measure: " + this.selectedMeasure.getMeasureId() + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
