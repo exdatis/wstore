@@ -11,7 +11,7 @@ and open the template in the editor.
 .measureTbl{  
     font-size: small;
     border-collapse:collapse;
-    border:1px solid navy;
+    border:thin solid cornflowerblue;
     /* width: 90%; */
 }
 .measureTblHeader{

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <!-- interface -->
     <composite:interface>
@@ -25,13 +26,20 @@
     </composite:interface>
     <!-- implementacija -->
     <composite:implementation>
+        <p:messages autoUpdate="true"></p:messages>
         <h:form id="formMeasure">
             <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
             <h:panelGrid columns="2" id="panelMeasureForm" border="0" bgcolor="silver">
                 <h:outputLabel value="#{cc.attrs.signLabel}"></h:outputLabel>
-                <h:inputText id="fieldSign" value="#{cc.attrs.signValue}" size="5"></h:inputText>
+                <h:inputText id="fieldSign" value="#{cc.attrs.signValue}" size="5" label="Oznaka mere: ">
+                    <f:validateLength minimum="1" maximum="10" ></f:validateLength>
+                    <h:message for="fieldSign"></h:message>
+                </h:inputText>
                 <h:outputLabel value="#{cc.attrs.nameLabel}"></h:outputLabel>
-                <h:inputText value="#{cc.attrs.nameValue}" size="20"></h:inputText>
+                <h:inputText id="fieldName" value="#{cc.attrs.nameValue}" size="20" label="Naziv jedinice: ">
+                    <f:validateLength minimum="1" maximum="70" ></f:validateLength>
+                    <h:message for="fieldName"></h:message>
+                </h:inputText> 
                 <h:commandButton
                     action="#{cc.attrs.btnReset}"
                     value="#{cc.attrs.btnResetLabel}"

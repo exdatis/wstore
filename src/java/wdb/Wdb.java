@@ -30,7 +30,9 @@ public final class Wdb {
         // izgubio sam pola dana. 
         
         // novi test(zbog unregister)
-        Class.forName("com.mysql.jdbc.Driver"); // radi i ovako
+        /* test sa kopiranjem driver-a direktno u glassfish lib dir */
+        /* NOTE: radi ali opet pokazuje poruku da nemoze da de-registruje */
+        //Class.forName("com.mysql.jdbc.Driver"); // radi i ovako
         Connection conn = null;
         String url = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
         //System.out.println(url + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");

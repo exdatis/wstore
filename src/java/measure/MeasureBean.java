@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author morar
  */
 @ManagedBean(name = "measureBean", eager = true)
-@SessionScoped
+@ViewScoped
 public class MeasureBean implements Serializable{
     
     private int measureId;

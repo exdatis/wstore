@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:tp="http://java.sun.com/jsf/composite/components/measure" 
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Jedinice mere</title>
     </h:head>
@@ -21,9 +22,9 @@
                     </div>
                     
                     <tp:measureForm
-                        signLabel="Oznaka mere"
+                        signLabel="Oznaka mere *"
                         signValue="#{measureBean.measureSign}"
-                        nameLabel="Naziv jedinice"
+                        nameLabel="Naziv jedinice *"
                         nameValue="#{measureBean.measureName}"
                         btnResetLabel="Novi zapis"
                         btnReset="#{measureBean.resetValues()}"
@@ -35,6 +36,7 @@
                 <!-- tabela masure (editable) -->
                 <div align="center" class="divTable">
                     <h:outputStylesheet library="css" name="tblMeasure.css"></h:outputStylesheet>
+                    <p:messages autoUpdate="true"></p:messages>
                     <h:form>
                         <h:dataTable value="#{measureBean.mesures}" var="measure"
                                      cellpadding="5"
@@ -49,13 +51,19 @@
                             
                             <h:column>
                                 <f:facet name="header">Oznaka mere</f:facet>
-                                <h:inputText value="#{measure.measureSign}" size="5" rendered="#{measure.canEdit}"></h:inputText>
+                                <h:inputText id="fieldOldSign" value="#{measure.measureSign}" size="5" rendered="#{measure.canEdit}" label="Oznaka mere:">
+                                    <f:validateLength minimum="1" maximum="10" ></f:validateLength>
+                                    <h:message for="fieldOldSign"></h:message>
+                                </h:inputText>
                                 <h:outputText value="#{measure.measureSign}" rendered="#{not measure.canEdit}"></h:outputText>
                             </h:column>
                             
                             <h:column>
                                 <f:facet name="header">Naziv jedinice</f:facet>
-                                <h:inputText value="#{measure.measureName}" size="15" rendered="#{measure.canEdit}"></h:inputText>
+                                <h:inputText id="fieldOldName" value="#{measure.measureName}" size="15" rendered="#{measure.canEdit}" label="Naziv jedinice:">
+                                    <f:validateLength minimum="1" maximum="70" ></f:validateLength>
+                                    <h:message for="fieldOldName"></h:message>
+                                </h:inputText>
                                 <h:outputText value="#{measure.measureName}" rendered="#{not measure.canEdit}"></h:outputText>
                             </h:column>
                             
